@@ -87,7 +87,11 @@ After retrieving the first ingredient, I continued exploring the system through 
 
 I started by listing the contents of common directories such as "/home" and checking the current user's permissions.
 
-To understand what level of access I had, I ran a privilege check using:   sudo -l
+To understand what level of access I had, I ran a privilege check using:   
+
+```bash
+sudo -l
+```
 
 The output showed that the current user (www-data) was allowed to run all commands as any user, including root, without requiring a password:
 
