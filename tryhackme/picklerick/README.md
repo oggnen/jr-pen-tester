@@ -40,7 +40,7 @@ After identifying that the web server was running on port 80, I opened the targe
 
 The homepage contained a simple message related to the challenge, but nothing immediately useful in terms of input fields or obvious vulnerabilities. Since there was no clear interaction point, I decided to look deeper.
 
-[!Homepage](homepage.png)
+[!homepage](homepage.png)
 
 I checked the page source to see if any hidden information was present. While reviewing the HTML, I found a comment that contained a username, which could potentially be useful later for authentication.
 
@@ -61,7 +61,7 @@ Since I had previously found a potential clue in /robots.txt and a username in t
 
 The credentials worked and I was able to log in and gain access to a restricted page where I could interact with the system further, which confirmed that the login portal was a key entry point for the rest of the challenge.
 
-[!Command Panel](command-panel.png)
+[!command-panel](command-panel.png)
 
 # 3. Exploitation
 
