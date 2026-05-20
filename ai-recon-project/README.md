@@ -1,4 +1,4 @@
-<img width="864" height="631" alt="image" src="https://github.com/user-attachments/assets/ce1d95ff-e132-419e-9404-04723a02a497" /># Automated Reconnaissance Toolkit
+# Automated Reconnaissance Toolkit
 
 # Overview 
 
