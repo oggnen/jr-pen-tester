@@ -64,8 +64,6 @@ Enter target domain: example.com
 
 ![Subdomain Enumeration](subdomain-enum.png)
 
-No subdomains were discovered for the tested domain, which is expected for inactive or placeholder domains like example.com.
-
 2. Nmap Scan
 
 ![Nmap Scan](nmap-scan.png)
