@@ -9,7 +9,9 @@ The goal of this project is to replicate a realistic early-stage penetration tes
 # Objectives
 
 Automate subdomain enumeration for a target domain
+
 Identify live hosts and exposed services
+
 Perform lightweight port scanning and HTTP probing
 
 # Tools Used
@@ -17,7 +19,9 @@ Perform lightweight port scanning and HTTP probing
 This project integrates commonly used penetration testing tools:
 
 Subfinder – subdomain enumeration
+
 Nmap – port and service scanning
+
 Gobuster – web directory enumeration
 
 # Workflow 
@@ -25,12 +29,19 @@ Gobuster – web directory enumeration
 The tool performs reconnaissance in the following order:
 
 1. Subdomain Enumeration
+
 Discover subdomains associated with the target domain using Subfinder.
+
 2. Port & Service Scanning
+ 
 Perform service detection and scan top ports using Nmap.
+
 3. Web Directory Enumeration
+ 
 Identify hidden directories and endpoints using Gobuster.
+
 4. Output Storage
+ 
 Save all results into structured files for later manual analysis.
 
 # Usage
@@ -76,7 +87,11 @@ results/
 # Key Learning Outcomes
 
 Understanding of the reconnaissance phase in penetration testing
+
 Practical use of security enumeration tools
+
 Automation of repetitive security tasks
+
 Basic workflow design for penetration testing pipelines
+
 Structured output handling for analysis
