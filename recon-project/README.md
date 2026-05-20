@@ -76,11 +76,8 @@ Enter target domain: example.com
 
 After execution, results are saved in the following format:
 results/
-
  ├── subdomains.txt
- 
  ├── nmap.txt
- 
  ├── gobuster.txt
 
 ![Output structure](output-structure.png)
