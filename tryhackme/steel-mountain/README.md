@@ -56,7 +56,7 @@ This revealed an exploit targeting HttpFileServer 2.3.x, associated with CVE-201
 
 # 5. Exploitation Preparation & Execution
 
-Next we start up Metasploit and we search for Rejetto 
+Next, I launched Metasploit and the appropriate exploit module for Rejetto HttpFileServer (HFS) was selected based on the identified vulnerability (CVE-2014-6287).
 
 ![Rejetto](rejetto-metasplot.png)
 
@@ -72,11 +72,11 @@ Next we set LHOST to our ip address and LPORT to a free port.
 
 # 6. Privilege Escalation
 
-To enumerate this machine we are asked to download a powershell script called PowerUp which is used to evaluate a Windows machine and determine any abnormalities.
+To enumerate potential privilege escalation vectors, the PowerUp script was used to identify misconfigurations on the target system.
 
 ![wget](wget.png)
 
-After downloading it we can upload it into Metasploit and get a PowerShell shell.
+After downloading it we can upload it into our target machine and execute it to get a PowerShell session.
 
 ![upload](upload.png)
 
@@ -102,8 +102,7 @@ We start a netcat listener on port 4443 which is the same as the LPORT paramater
 
 ![nc](nc.png)
 
-Now all we have to do is stop the service AdvancedSystemCareService9 and then restart it but this time our reverse shell will start instead because the Advanced.exe is before the
-AdvancedSystemCareService9.
+Restarting the service causes Windows to execute the replaced service binary with SYSTEM privileges.
 
 ![sc](sc.png)
 
