@@ -58,26 +58,18 @@ A Python exploit script (49125.py) was identified and reviewed. The exploit work
 
 # 5. Exploitation Preparation & Execution
 
-The exploit was executed with the following format:
+Next we start up Metasploit and we search for Rejetto 
 
-```bash
-python3 stlmtn.py <RHOST> 8080 "whoami"
-```
+![Rejetto](rejetto-metasplot.png)
 
-The script generates a malicious HTTP request targeting the vulnerable parameter:
+For this exploit we need to set a few parameters first. We set RHOST to the target ip address.
+We set RPORT to 8080 which is the port of the web server.
+Next we set LHOST to our ip address and LPORT to a free port.
 
-```bash
-http://<TARGET_IP>:8080/?search=%00{.+exec|whoami.}
-```
+![Meterpreter](meterpreter.png)
 
-This confirmed that the target is vulnerable to remote command execution via the file server.
+---
 
-# 6. Initial Access
+![pwd](first-flag.png)
 
-After identifying a vulnerable instance of HttpFileServer running on port 8080, I used the Metasploit framework to exploit a known Remote Code Execution vulnerability (CVE-2014-6287).
 
-The exploit module was configured with the target IP address, service port, and attacker callback parameters (LHOST and LPORT). Upon execution, Metasploit delivered a payload through a crafted HTTP request to the vulnerable search parameter.
-
-This resulted in successful code execution on the target system and the establishment of a Meterpreter session.
-
-# 7. Privilege Escalation
